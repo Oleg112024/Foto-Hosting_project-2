@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}📷 Главная - Фото Хостинг{% endblock %}
+
+{% block content %}
+<div class="hero-section">
+    <div class="container text-center">
+        <h1 class="display-4">Добро пожаловать в Фото Хостинг</h1>
+        <p class="lead">Простой и удобный способ поделиться вашими изображениями</p>
+        <a href="{{ url_for('upload_file') }}" class="btn btn-primary btn-lg mt-3">Загрузить изображение</a>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="text-center">
+                <div class="feature-icon">📁</div>
+                <h3>Простая загрузка</h3>
+                <p>Загружайте изображения в форматах JPG, PNG и GIF размером до 5 МБ</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="text-center">
+                <div class="feature-icon">🔗</div>
+                <h3>Прямые ссылки</h3>
+                <p>Получайте прямые ссылки на ваши изображения для использования где угодно</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="text-center">
+                <div class="feature-icon">🔒</div>
+                <h3>Надёжное хранение</h3>
+                <p>Ваши изображения надёжно хранятся на наших серверах</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center mt-5">
+        <h2>Начните прямо сейчас</h2>
+        <p class="lead">Загрузите ваше изображение и получите прямую ссылку на него</p>
+        <a href="{{ url_for('upload_file') }}" class="btn btn-outline-primary btn-lg">Перейти к загрузке</a>
+    </div>
+</div>
+{% endblock %}

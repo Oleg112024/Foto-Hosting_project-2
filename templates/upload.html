@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %}Загрузка изображения - Фото Хостинг{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="upload-container">
+        <h2 class="text-center mb-4">Загрузка изображения</h2>
+        
+        <form method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
+            <div class="mb-4">
+                <div class="input-group">
+                    <input type="file" class="form-control" name="file" id="file" accept=".jpg,.jpeg,.png,.gif" required>
+                    <button type="submit" class="btn btn-primary">Загрузить</button>
+                </div>
+                <div class="form-text">
+                    Поддерживаемые форматы: JPG, PNG, GIF<br>
+                    Максимальный размер файла: 5 МБ<br>
+                    Время хранения фото: 30 дней
+                </div>
+            </div>
+        </form>
+
+        <div class="alert alert-info" role="alert">
+            <h4 class="alert-heading">📝 Инструкция</h4>
+            <ol class="mb-0">
+                <li>Нажмите кнопку "Выберите файл" или перетащите изображение в поле загрузки</li>
+                <li>Выберите изображение с вашего устройства</li>
+                <li>Нажмите кнопку "Загрузить"</li>
+                <li>После успешной загрузки вы получите прямую ссылку на изображение</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Проверка формы перед отправкой
+    (function () {
+        'use strict'
+        var forms = document.querySelectorAll('.needs-validation')
+        Array.prototype.slice.call(forms).forEach(function (form) {
+            form.addEventListener('submit', function (event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault()
+                    event.stopPropagation()
+                }
+                form.classList.add('was-validated')
+            }, false)
+        })
+    })()
+
+    // Проверка размера файла
+    document.getElementById('file').addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (file && file.size > 5 * 1024 * 1024) {
+            alert('Размер файла превышает 5 МБ');
+            e.target.value = '';
+        }
+    });
+</script>
+{% endblock %}

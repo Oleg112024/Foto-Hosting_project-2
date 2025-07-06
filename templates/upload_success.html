@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}Изображение загружено - Фото Хостинг{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="upload-container">
+        <div class="text-center mb-4">
+            <h2 class="text-success">✅ Изображение успешно загружено!</h2>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title">Прямая ссылка на изображение:</h5>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" value="{{ image_url }}" id="imageUrl" readonly>
+                    <button class="btn btn-outline-primary" type="button" onclick="copyToClipboard()">Копировать</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center">
+            <img src="{{ image_url }}" class="img-fluid mb-4 rounded" alt="Загруженное изображение" style="max-height: 300px;">
+        </div>
+
+        <div class="d-grid gap-2">
+            <a href="{{ url_for('upload_file') }}" class="btn btn-primary">Загрузить ещё</a>
+            <a href="{{ url_for('index') }}" class="btn btn-outline-secondary">Вернуться на главную</a>
+        </div>
+    </div>
+</div>
+
+<script>
+function copyToClipboard() {
+    var copyText = document.getElementById("imageUrl");
+    copyText.select();
+    copyText.setSelectionRange(0, 99999);
+    document.execCommand("copy");
+    
+    var button = event.target;
+    var originalText = button.innerHTML;
+    button.innerHTML = "Скопировано!";
+    button.classList.remove("btn-outline-primary");
+    button.classList.add("btn-success");
+    
+    setTimeout(function() {
+        button.innerHTML = originalText;
+        button.classList.remove("btn-success");
+        button.classList.add("btn-outline-primary");
+    }, 2000);
+}
+</script>
+{% endblock %}
