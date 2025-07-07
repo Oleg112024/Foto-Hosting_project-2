@@ -32,10 +32,10 @@ ENV/
 *.swo
 
 # Logs
-#logs/
+logs/*
 
 # Uploaded images
-#images/
+images/*
 
 # Environment variables
 .env
